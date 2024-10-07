@@ -18,7 +18,10 @@
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+
     <![endif]-->
+
+    
 </head>
 <body id="page-top">
 
@@ -38,9 +41,9 @@
 	   	 </div>
 	   	 <div class="collapse navbar-collapse navbar-right" id="menu">
 	   	 	<ul class="nav navbar-nav">
-	   	 		<li class=" lien"><a href="index.html"><i class="fa fa-home sr-icons"></i> Home</a></li>
-	   	 		<li class="lien"><a href="about.html"><i class="fa fa-bookmark sr-icons"></i> About</a></li>
-	   	 		<li class="lien"><a href="blog.html"><i class="fa fa-file-text sr-icons"></i> Blog</a></li>
+	   	 		<li class=" lien"><a href="index.php"><i class="fa fa-home sr-icons"></i> Home</a></li>
+	   	 		<li class="lien"><a href="about.php"><i class="fa fa-bookmark sr-icons"></i> About</a></li>
+	   	 		<li class="lien"><a href="blog.php"><i class="fa fa-file-text sr-icons"></i> Blog</a></li>
 	   	 		<li class="active"><a href="#"><i class="fa fa-phone-square sr-icons"></i> Contact</a></li>
 	   	 	</ul>
 	   	 </div>
