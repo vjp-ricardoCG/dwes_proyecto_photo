@@ -1,28 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>PhotographItem-Responsive Theme | Contact</title>
-
-	<!-- Bootstrap core css -->
-	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
-	<!-- Bootstrap core css -->
-	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<!-- Font Awesome icons -->
-	<link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-
-    <![endif]-->
-
-    
-</head>
+<?php include __DIR__.'/partials/inicio-documento.part.php' ?>
 <body id="page-top">
 
 <!-- Navigation Bar -->
@@ -58,33 +34,51 @@
        	   <h1>CONTACT US</h1>
        	   <hr>
        	   <p>Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
-	       <form class="form-horizontal">
+	       
+		 <div class="alert alert-danger">
+			<ul>
+				<?php
+					if($_SERVER['REQUEST_METHOD'] == 'POST'){
+						for($i=0;$i<count($arrayErrores); $i++ ){
+							if(!empty($arrayErrores[$i]) ){
+								echo " <li> ".$arrayErrores[$i]."</li>";
+							}
+					
+						}
+					}
+				?>
+
+			</ul>
+		 </div>
+		 
+		 
+		   <form class="form-horizontal" method=POST>
 	       	  <div class="form-group">
 	       	  	<div class="col-xs-6">
 	       	  	    <label class="label-control">First Name</label>
-	       	  		<input class="form-control" type="text">
+	       	  		<input class="form-control" type="text" name="FirstName">
 	       	  	</div>
 	       	  	<div class="col-xs-6">
 	       	  	    <label class="label-control">Last Name</label>
-	       	  		<input class="form-control" type="text">
+	       	  		<input class="form-control" type="text" name="LastName">
 	       	  	</div>
 	       	  </div>
 	       	  <div class="form-group">
 	       	  	<div class="col-xs-12">
 	       	  		<label class="label-control">Email</label>
-	       	  		<input class="form-control" type="text">
+	       	  		<input class="form-control" type="text" name="Email">
 	       	  	</div>
 	       	  </div>
 	       	  <div class="form-group">
 	       	  	<div class="col-xs-12">
 	       	  		<label class="label-control">Subject</label>
-	       	  		<input class="form-control" type="text">
+	       	  		<input class="form-control" type="text" name="Subject">
 	       	  	</div>
 	       	  </div>
 	       	  <div class="form-group">
 	       	  	<div class="col-xs-12">
 	       	  		<label class="label-control">Message</label>
-	       	  		<textarea class="form-control"></textarea>
+	       	  		<textarea class="form-control" name="Message"></textarea>
 	       	  		<button class="pull-right btn btn-lg sr-button">SEND</button>
 	       	  	</div>
 	       	  </div>
@@ -115,14 +109,7 @@
    </div>
 <!-- Principal Content Start -->
 
-<!-- Jquery -->
-   <script type="text/javascript" src="js/jquery.min.js"></script>
-   <!-- Bootstrap core Javascript -->
-   <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
-   <!-- Plugins -->
-   <script type="text/javascript" src="js/jquery.easing.min.js"></script>
-   <script type="text/javascript" src="js/jquery.magnific-popup.min.js"></script>
-   <script type="text/javascript" src="js/scrollreveal.min.js"></script>
-   <script type="text/javascript" src="js/script.js"></script>
-</body>
-</html>
+
+
+<?php include __DIR__.'/partials/fin-documento.part.php' ?>
+
