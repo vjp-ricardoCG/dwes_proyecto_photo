@@ -1,6 +1,9 @@
 <?php include __DIR__ . '/partials/inicio-documento.part.php';
 ?>
 
+<?php include __DIR__ . '/partials/nav.part.php';
+?>
+
 <body id="page-top">
 
 
