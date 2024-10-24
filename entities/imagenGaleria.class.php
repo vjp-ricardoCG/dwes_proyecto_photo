@@ -40,6 +40,22 @@ public function getUrlGallery():string {
     return self::RUTA_IMAGENES_GALLERY.$this->getNombre();
     
 }
+public function getNumVisualizaciones():int{
+
+    return $this->numVisualizaciones;
+}
+
+public function getNumLikes():int{
+
+    return $this->numLikes;
+}
+
+
+public function getNumDownloads():int{
+
+    return $this->numDownloads;
+}
+
 
     
 

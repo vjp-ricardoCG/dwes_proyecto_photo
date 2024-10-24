@@ -52,6 +52,7 @@
           $arrayImg = $arrayImagenes;
           $idCategory = "category3";
           $activa = "active";
+           shuffle($arrayImagenes);
           include __DIR__ . '/partials/imagegallery.part.php'  ?>
         </div>
         <!-- End of First category pictures -->
@@ -63,6 +64,7 @@
           
            $idCategory = "category3";
           $activa = "active";
+          shuffle($arrayImagenes);
           include __DIR__ . '/partials/imagegallery.part.php'  ?>
         </div>
         <!-- End of second category pictures -->
@@ -71,9 +73,10 @@
         <div id="category3" class="tab-pane">
 
           <?php
-          $arrayImg = $arrayImagenes;
+          
           $idCategory = "category3";
           $activa = "active";
+          shuffle($arrayImagenes);
           include __DIR__ . '/partials/imagegallery.part.php'  ?>
           <!-- Third Category Pictures -->
 
