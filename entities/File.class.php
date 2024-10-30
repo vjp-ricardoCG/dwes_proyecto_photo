@@ -78,13 +78,9 @@
             $ruta=$rutaDestino.$this->fileName;
 
             if(is_file($ruta)){
-                $i=1;
 
-                //le añado (1) a $ruta
-                //compruebo de nuevo if(is_file($ruta))
-                //le añado ($i+1)
+                    $i=1;
 
-                
                     $cadena = $this->fileName;
                     while(is_file($ruta)){
 
@@ -94,9 +90,7 @@
 
                     }
 
-                // $fechaActual=date('dmYHis');
-                // 
-                // 
+               
                 
 
 
