@@ -2,7 +2,7 @@
 
 
 
-
+require "partials/asociado.php";
 
 require 'entities/ImagenGaleria.class.php';
 
@@ -15,7 +15,7 @@ $descripcion ="descripcion imagen ".($i+1);
 
 $arrayImagenes[$i]= new imagenGaleria($nombre,$descripcion,rand(0,1000),rand(0,1000),rand(0,1000));
 
-
+$arrayAsociados = [$asociado1,$asociado2,$asociado3];
 
 }
 

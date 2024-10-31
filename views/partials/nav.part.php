@@ -17,7 +17,8 @@
               <li class="active lien"><a href="#"><i class="fa fa-home sr-icons"></i> Home</a></li>
               <li class=" lien"><a href="about.php"><i class="fa fa-bookmark sr-icons"></i> About</a></li>
               <li class=" lien"><a href="blog.php"><i class="fa fa-file-text sr-icons"></i> Blog</a></li>
-              <li><a href="contact.php"><i class="fa fa-phone-square sr-icons"></i> Contact</a></li>
+              <li class=" lien"><a href="contact.php"><i class="fa fa-phone-square sr-icons"></i> Contact</a></li>
+              <li class=" lien"><a href="galeria.php"><i class="fa fa-solid fa-image"></i> Gallery</a></li>
             </ul>
          </div>
      </div>
