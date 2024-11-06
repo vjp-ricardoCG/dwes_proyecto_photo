@@ -14,7 +14,7 @@
             <hr>
             <?php if ($_SERVER['REQUEST_METHOD'] === 'POST') : ?>
 
-                <div class="alert alert-<?= empty($errores)?'info' : 'danger';?> alert-dismissibre" role="alert">
+                <div class="alert alert-<?= empty($errores) ? 'info' : 'danger'; ?> alert-dismissibre" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">x</span>
                     </button>
@@ -46,7 +46,7 @@
                     <div class="col-xs-12">
                         <label class="label-control">Descripcion</label>
                         <textarea class="form-control" name="descripcion"><?= $descripcion ?></textarea>
-                         <button class="pull-right btn btn-lg sr-button">ENVIAR</button> 
+                        <button class="pull-right btn btn-lg sr-button">ENVIAR</button>
 
                         <!-- <input class="pull-right btn btn-lg sr-button" type="submit" value="ENVIAR" name="submit"> -->
 
@@ -57,6 +57,31 @@
             </form>
             <hr class="divider">
             <div class="imagenes_galeria">
+
+                <!-- Tabla de imagenes  -->
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Imagen</th>
+                            <th scope="col">Visualizaciones</th>
+                            <th scope="col">Likes</th>
+                            <th scope="col">Descargas</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach($imagenes as $imagen):?>
+                        <tr>
+                            <th scope="row"><?=$imagen->getId()?></th>
+                            <td><img src="<?=$imagen->getUrlGallery()?>" alt="<?=$imagen->getDescripcion()?>" title="<?=$imagen->getDescripcion()?>" width="150px"></td>
+                            <td><?=$imagen->getNumVisualizaciones()?></td>
+                            <td><?=$imagen->getNumLikes()?></td>
+                            <td><?=$imagen->getNumDownloads()?></td>
+                        </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
 
             </div>
         </div>
