@@ -1,35 +1,58 @@
 <?php
 
-require __DIR__."/../exceptions/QueryException.class.php";
-class QueryBuilder{
+require __DIR__ . "/../exceptions/QueryException.class.php";
+require __DIR__ . "/../core/App.class.php";
+class QueryBuilder
+{
 
 
-private $connection;
-
-public function __construct(PDO $connection){
-
-    $this->connection=$connection;
-}
+    private $connection;
 
 
-public function findAll(string $table, string $classEntity){
-
-$sql = "SELECT * from $table";
+    private $table;
 
 
+    private $classEntity;
 
-$pdoStatement = $this -> connection -> prepare($sql);
-
-
-
-if($pdoStatement -> execute() === false){
-
-throw new QueryException("No se ha podido ejecutar la consulta");
-};
-
-return $pdoStatement->fetchAll(PDO::FETCH_CLASS |PDO::FETCH_PROPS_LATE, $classEntity);
+    public function __construct(string $table, string $classEntity)
+    {
+        $this->table = $table;
+        $this->classEntity = $classEntity;
+        $this->connection = App::getConnection();
+    }
 
 
-}
+    public function findAll()
+    {
 
+        $sql = "SELECT * from $this->table";
+
+
+
+        $pdoStatement = $this->connection->prepare($sql);
+
+
+
+        if ($pdoStatement->execute() === false) {
+
+            throw new QueryException("No se ha podido ejecutar la consulta");
+        };
+
+        return $pdoStatement->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, $this->classEntity);
+    }
+
+    public function save(IEntity $entity): void
+    {
+        try {
+            $parameters = $entity->toArray();
+            $sql = sprintf('insert into %s (%s) values (%s)', $this->table, implode(', ', array_keys($parameters)), ':' . implode(',:', array_keys($parameters)));
+
+
+        $statement =$this->connection->prepare($sql);
+        $statement->execute($parameters);
+
+        } catch (PDOException $exception) {
+            throw new QueryException('Error al insertar en la BD');
+        }
+    }
 }

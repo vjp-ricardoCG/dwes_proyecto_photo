@@ -4,6 +4,9 @@ require 'entities/File.class.php';
 require 'entities/imagenGaleria.class.php';
 require 'entities/Connection.class.php';
 require 'entities/QueryBuilder.class.php';
+require_once 'exceptions/AppException.class.php';
+require_once 'core/App.class.php';
+
 
 $errores = [];
 $descripcion = '';
@@ -11,9 +14,13 @@ $mensaje='';
 
 
  try{
-$connection = Connection::make();
+    $config = require_once 'app/config.php';
+    App::bind('config',$config);
+
+    $queryBuilder = new QueryBuilder('imagenes','ImagenGaleria');
 if ($_SERVER['REQUEST_METHOD'] ==='POST'){
 
+    
 
    
 
@@ -30,25 +37,22 @@ if ($_SERVER['REQUEST_METHOD'] ==='POST'){
     
     
 
-    $sql="INSERT INTO imagenes (nombre,descripcion) VALUES (:nombre, :descripcion)";
+    // $sql="INSERT INTO imagenes (nombre,descripcion) VALUES (:nombre, :descripcion)";
 
-    $pdoStatement = $connection->prepare($sql);
+    // $pdoStatement = $connection->prepare($sql);
 
-    $parametros = [' :nombre'=>$imagen->getFileName(),' :descripcion'=>$descripcion];
+    // $parametros = [':nombre'=>$imagen->getFileName(),':descripcion'=>$descripcion];
+
+    $imagenGaleria = new imagenGaleria($imagen->getFileName(),$descripcion);
+    $queryBuilder->save($imagenGaleria);
+    $descripcion="";
+    $mensaje="Imagen guardada";
 
 
-    if($pdoStatement->execute($parametros)=== false){
-        $errores[]="No se ha podido guardar la imagen en la BD";
-
-
-    }else{
-        $descripcion="";
-        $mensaje= "Imagen guardada";
-    }
+    
 }
     $mensaje = 'Datos enviados';
-    $queryBuilder = new QueryBuilder($connection);
-    $imagenes = $queryBuilder->findAll("imagenes","ImagenGaleria");
+    
 
     }catch(FileException $exception){
 
@@ -58,5 +62,11 @@ if ($_SERVER['REQUEST_METHOD'] ==='POST'){
 
         $errores[] = $exception->getMessage();
     }
+    catch(AppException $exception){
 
+        $errores[] = $exception->getMessage();
+    }finally{
+        
+    $imagenes = $queryBuilder->findAll();
+    }
 require 'views/galeria.view.php';

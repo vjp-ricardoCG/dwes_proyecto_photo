@@ -1,6 +1,6 @@
 <?php
-
-class imagenGaleria{
+require "database/IEntity.class.php";
+class imagenGaleria implements IEntity{
 
     const RUTA_IMAGENES_PORTFOLIO ='images/index/portfolio/';
     const RUTA_IMAGENES_GALLERY ='images/index/gallery/';
@@ -21,6 +21,17 @@ $this->numLikes= $numLikes;
 $this->numDownloads= $numDownloads;
 $this->id= null;
 
+}
+
+public function toArray(): array{
+    return[
+        'id'=>$this->getId(),
+        'nombre'=>$this->getNombre(),
+        'descripcion'=>$this->getDescripcion(),
+        'numVisualizaciones'=>$this->getNumVisualizaciones(),
+        'numLikes'=>$this->getNumLikes(),
+        'numDownloads'=>$this->getNumDownloads()
+    ];
 }
 
 public function getNombre():string {
