@@ -1,8 +1,8 @@
 <?php
 
 require __DIR__ . "/../exceptions/QueryException.class.php";
-require __DIR__ . "/../core/App.class.php";
-class QueryBuilder
+require_once __DIR__ . "/../core/App.class.php";
+abstract class QueryBuilder
 {
 
 

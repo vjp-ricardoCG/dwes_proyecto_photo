@@ -1,11 +1,12 @@
 <?php
 
-require 'entities/File.class.php';
-require 'entities/imagenGaleria.class.php';
-require 'entities/Connection.class.php';
-require 'entities/QueryBuilder.class.php';
+require_once 'entities/File.class.php';
+require_once 'entities/imagenGaleria.class.php';
+require_once 'entities/Connection.class.php';
+require_once 'entities/imagenGaleria.class.php';
 require_once 'exceptions/AppException.class.php';
-require_once 'core/App.class.php';
+require 'core/App.class.php';
+require_once 'repository/ImagenGaleriaRepository.class.php';
 
 
 $errores = [];
@@ -17,7 +18,7 @@ $mensaje='';
     $config = require_once 'app/config.php';
     App::bind('config',$config);
 
-    $queryBuilder = new QueryBuilder('imagenes','ImagenGaleria');
+    $imagenRepository = new ImagenGaleriaRepository();
 if ($_SERVER['REQUEST_METHOD'] ==='POST'){
 
     
@@ -44,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] ==='POST'){
     // $parametros = [':nombre'=>$imagen->getFileName(),':descripcion'=>$descripcion];
 
     $imagenGaleria = new imagenGaleria($imagen->getFileName(),$descripcion);
-    $queryBuilder->save($imagenGaleria);
+    $imagenRepository->save($imagenGaleria);
     $descripcion="";
     $mensaje="Imagen guardada";
 
@@ -67,6 +68,6 @@ if ($_SERVER['REQUEST_METHOD'] ==='POST'){
         $errores[] = $exception->getMessage();
     }finally{
         
-    $imagenes = $queryBuilder->findAll();
+    $imagenes = $imagenRepository->findAll();
     }
 require 'views/galeria.view.php';

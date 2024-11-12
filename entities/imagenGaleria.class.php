@@ -12,7 +12,9 @@ private $numVisualizaciones;
 private $numLikes;
 private $numDownloads;
 
-public function __construct(string $nombre="", string $descripcion="", int $numVisualizaciones=0, int $numLikes=0, int $numDownloads=0){
+private $categoria;
+
+public function __construct(string $nombre="", string $descripcion="", int $categoria=0,int $numVisualizaciones=0, int $numLikes=0, int $numDownloads=0){
 
 $this->nombre= $nombre;
 $this->descripcion= $descripcion;
@@ -20,6 +22,7 @@ $this->numVisualizaciones= $numVisualizaciones;
 $this->numLikes= $numLikes;
 $this->numDownloads= $numDownloads;
 $this->id= null;
+$this->categoria=$categoria;
 
 }
 
@@ -30,7 +33,8 @@ public function toArray(): array{
         'descripcion'=>$this->getDescripcion(),
         'numVisualizaciones'=>$this->getNumVisualizaciones(),
         'numLikes'=>$this->getNumLikes(),
-        'numDownloads'=>$this->getNumDownloads()
+        'numDownloads'=>$this->getNumDownloads(),
+        'categoria' => $this->getCategoria()
     ];
 }
 
@@ -40,6 +44,12 @@ public function getNombre():string {
 
 public function getId(){
     return $this->id;
+}
+
+public function getCategoria() {
+
+
+
 }
 public function setNombre(string $nombre):void {
     $this->nombre =$nombre;
