@@ -32,9 +32,9 @@ if ($_SERVER['REQUEST_METHOD'] ==='POST'){
 
     $imagen= new File('imagen',$tiposAceptados);
 
-    $imagen->saveUploadFile((ImagenGaleria::RUTA_IMAGENES_GALLERY));
+    $imagen->saveUploadFile(ImagenGaleria::RUTA_IMAGENES_GALLERY);
 
-    $imagen->copyFile(imagenGaleria::RUTA_IMAGENES_GALLERY,imagenGaleria::RUTA_IMAGENES_PORTFOLIO);
+    $imagen->copyFile(ImagenGaleria::RUTA_IMAGENES_GALLERY,ImagenGaleria::RUTA_IMAGENES_PORTFOLIO);
     
     
 
