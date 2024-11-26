@@ -89,7 +89,7 @@
                         <?php foreach($imagenesLogos as $logos):?>
                         <tr>
                             <th scope="row"><?=$logos->getId()?></th>
-                            <td><img src="<?=$logos->getUrlGallery()?>" alt="<?=$logos->getDescripcion()?>" title="<?=$logos->getDescripcion()?>" width="150px"></td>
+                            <td><img src="<?=$logos->getUrlLogo()?>" alt="<?=$logos->getDescripcion()?>" title="<?=$logos->getDescripcion()?>" width="150px"></td>
                             
                             
                            

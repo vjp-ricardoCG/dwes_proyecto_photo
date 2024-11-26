@@ -119,7 +119,7 @@
             <div class="text-muted text-left">
             <?php foreach ($asociados as $asociado): ?>
               <ul class="list-inline">
-                <li><img width="50px"src="<?=$asociado->getUrlGallery()?>" alt="hola"></li>
+                <li><img width="50px"src="<?=$asociado->getUrlLogo()?>" alt="hola"></li>
                 <li><?=$asociado->getNombre()?></li>
               </ul>
               <?php endforeach ?>
