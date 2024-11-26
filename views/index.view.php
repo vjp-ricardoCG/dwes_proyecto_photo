@@ -88,7 +88,11 @@
       </div><!-- End of Index-body box -->
 
       <!-- Newsletter form -->
-      <div class="index-form text-center">
+      
+
+    </div><!-- End of index box -->
+
+    <div class="index-form text-center">
         <h3>SUSCRIBE TO OUR NEWSLETTER </h3>
         <h5>Suscribe to receive our News and Gifts</h5>
         <form class="form-horizontal">
@@ -113,25 +117,17 @@
             <h4>Our Main Partners</h4>
             <hr>
             <div class="text-muted text-left">
+            <?php foreach ($asociados as $asociado): ?>
               <ul class="list-inline">
-                <li><img src="images/index/log2.jpg" alt="logo"></li>
-                <li>First Partner Name</li>
+                <li><img width="50px"src="<?=$asociado->getUrlGallery()?>" alt="hola"></li>
+                <li><?=$asociado->getNombre()?></li>
               </ul>
-              <ul class="list-inline">
-                <li><img src="images/index/log1.jpg" alt="logo"></li>
-                <li>Second Partner Name</li>
-              </ul>
-              <ul class="list-inline">
-                <li><img src="images/index/log3.jpg" alt="logo"></li>
-                <li>Third Partner Name</li>
-              </ul>
+              <?php endforeach ?>
             </div>
           </div>
         </div>
       </div>
       <!-- End of Box within partners name and logo -->
-
-    </div><!-- End of index box -->
 
     <!-- Footer -->
     <footer class="home-page">

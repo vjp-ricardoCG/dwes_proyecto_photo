@@ -37,6 +37,14 @@ public function getNumImagenes(){
  return $this->numImagenes;
 
 }
+
+public function setNumImagenes(int $numImagenes){
+
+    $this->numImagenes = $numImagenes;
+   
+   }
+
+   
     public function toArray():array  {
         return[
             'id'=> $this->getId(),

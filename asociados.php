@@ -1,9 +1,33 @@
+<!-- ?php
+// require 'utils/utils.php';
+
+
+
+
+
+// require_once 'entities/Asociado.class.php';
+
+// $asociado1 = new Asociado("Asociado 1" , "log1.jpg","log1");
+// $asociado2 = new Asociado("Asociado 2" , "log2.jpg","log2");
+// $asociado3 = new Asociado("Asociado 3" , "log3.jpg","log3");
+// $asociado4 = new Asociado("Asociado 4" , "log1.jpg","log1");
+// $asociado5 = new Asociado("Asociado 5" , "log2.jpg","log2");
+// $asociado6 = new Asociado("Asociado 6" , "log3.jpg","log3");
+
+// $asociados=[$asociado1,$asociado2,$asociado3,$asociado4,$asociado5,$asociado6];
+
+
+// if(sizeof($asociados)>3){
+
+//    $asociados= manejarAsociados($asociados);
+// } 
+
 <?php
 
 require_once 'entities/File.class.php';
 require 'utils/utils.php';
 require_once 'entities/Connection.class.php';
-require_once 'entities/ImagenGaleria.class.php';
+require_once 'entities/imagenAsociado.class.php';
 require_once 'exceptions/AppException.class.php';
 require 'core/App.class.php';
 require_once 'repository/ImagenGaleriaRepository.class.php';
@@ -21,7 +45,7 @@ $mensaje='';
     App::bind('config',$config);
 
     $imagenRepository = new ImagenGaleriaRepository();
-    $categoriaRepository= new categoriaRepository();
+    
 if ($_SERVER['REQUEST_METHOD'] ==='POST'){
 
     
@@ -31,15 +55,17 @@ if ($_SERVER['REQUEST_METHOD'] ==='POST'){
     
     $descripcion = trim(htmlspecialchars($_POST['descripcion']));
 
-    $categoria =trim(htmlspecialchars($_POST['categoria']));
+    $nombre =trim(htmlspecialchars($_POST['nombre']));
+    
 
     $tiposAceptados =['image/jpeg',"image/jpg","image/gif","image/png"];
 
-    $imagen= new File('imagen',$tiposAceptados);
+    $logo= new File('logo',$tiposAceptados);
+    echo"hola".$logo->getFileName();
 
-    $imagen->saveUploadFile(ImagenGaleria::RUTA_IMAGENES_GALLERY);
+    $logo->saveUploadFile(imagenAsociado::RUTA_IMAGENES_GALLERY);
 
-    $imagen->copyFile(ImagenGaleria::RUTA_IMAGENES_GALLERY,ImagenGaleria::RUTA_IMAGENES_PORTFOLIO);
+    
     
     
 
@@ -49,8 +75,8 @@ if ($_SERVER['REQUEST_METHOD'] ==='POST'){
 
     // $parametros = [':nombre'=>$imagen->getFileName(),':descripcion'=>$descripcion];
 
-    $imagenGaleria = new imagenGaleria($imagen->getFileName(),$descripcion,$categoria);
-    $imagenRepository->guarda($imagenGaleria);
+    $imagenAsociado = new imagenAsociado($nombre,$descripcion);
+    $imagenRepository->saveLogo($imagenAsociado);
     $descripcion="";
     $mensaje="Imagen guardada";
 
@@ -73,7 +99,15 @@ if ($_SERVER['REQUEST_METHOD'] ==='POST'){
         $errores[] = $exception->getMessage();
     }finally{
         
-    $imagenes = $imagenRepository->findAll();
-    $categorias=$categoriaRepository->findAll();
+    $imagenesLogos = $imagenRepository->findAllAsociados();
+    
+    
     }
-require 'views/galeria.view.php';
+
+
+
+
+
+
+require 'views/asociados.view.php';
+

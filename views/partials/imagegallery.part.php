@@ -4,7 +4,7 @@
 echo<<<HTML
 <div class="row popup-gallery">
 HTML;
-for($i=0;$i<12;$i++){
+foreach($arrayImagenes as $imagen){
 
     echo<<<HTML
 
@@ -12,8 +12,8 @@ for($i=0;$i<12;$i++){
                 <div class="col-xs-12 col-sm-6 col-md-3">
                 <div class="sol">
 HTML;
-echo'<img class="img-responsive" src="'.
-                    $arrayImagenes[$i]->getUrlPortfolio().'" alt="'.$arrayImagenes[$i]->getDescripcion().'">';
+echo'<img width="200px" height="200px" class="img-responsive" src="'.
+                    $imagen->getUrlPortfolio().'" alt="'.$imagen->getDescripcion().'">';
 echo<<<HTML
 
                     
@@ -23,7 +23,7 @@ echo<<<HTML
                           <li>
 HTML;
 
-  echo'<a class="gallery" href="'.$arrayImagenes[$i]->getUrlGallery().'" data-toggle="tooltip" data-original-title="Quick View">';
+  echo'<a class="gallery" href="'.$imagen->getUrlGallery().'" data-toggle="tooltip" data-original-title="Quick View">';
 echo<<<HTML
                             
                               <i class="fa fa-eye"></i>
@@ -52,9 +52,9 @@ HTML;
 
 
 ECHO'                    
-                          <li><i class="fa fa-eye"></i>'.$arrayImagenes[$i]->getNumVisualizaciones().'</li>
-                          <li><i class="fa fa-heart"></i>'.$arrayImagenes[$i]->getNumLikes().'</li>
-                          <li><i class="fa fa-download"></i>'.$arrayImagenes[$i]->getNumDownloads().'</li>
+                          <li><i class="fa fa-eye"></i>'.$imagen->getNumVisualizaciones().'</li>
+                          <li><i class="fa fa-heart"></i>'.$imagen->getNumLikes().'</li>
+                          <li><i class="fa fa-download"></i>'.$imagen->getNumDownloads().'</li>
                           
                         </ul>
                         </div>
@@ -68,7 +68,10 @@ ECHO'
        
 }
 echo<<<HTML
-<nav class="text-center">
+
+
+              </div>
+              <nav class="text-center">
                 <ul class="pagination">
                   <li class="active"><a href="#">1</a></li>
                   <li><a href="#">2</a></li>
@@ -78,6 +81,5 @@ echo<<<HTML
                   </a></li>
                 </ul>
               </nav>
-              </div>
 HTML;              
 ?>

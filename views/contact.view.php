@@ -12,21 +12,33 @@
        	   <hr>
        	   <p>Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
 	       
-		 <div class="alert alert-danger">
-			<ul>
+		 
 				<?php
 					if($_SERVER['REQUEST_METHOD'] == 'POST'){
-						for($i=0;$i<count($arrayErrores); $i++ ){
-							if(!empty($arrayErrores[$i]) ){
-								echo " <li> ".$arrayErrores[$i]."</li>";
+						if (!empty($array_error)) {
+						echo" <div class='alert alert-danger'>
+			<ul>";
+						foreach ($array_error as $error) {
+							
+							echo "<li> $error ";
 							}
-					
-						}
+						
+						echo"	</ul>
+		 </div>";
+		}
 					}
+					if(!empty($array_mostrarDatos)) {
+						echo "<div class='alert alert-info'>";
+						foreach ($array_mostrarDatos as $dato) {
+							echo "<li> $dato ";
+						}
+						echo "</div>";
+					}
+
+
 				?>
 
-			</ul>
-		 </div>
+		
 		 
 		 
 		   <form class="form-horizontal" method=POST>

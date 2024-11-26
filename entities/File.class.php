@@ -22,12 +22,12 @@
 
             $this->file = $_FILES[$fileName];
             $this->fileName = "";
-
+            
 
 
             if (!isset($this->file)){
 
-                throw new FileException("Debes selecciones un fichero ");
+                throw new FileException("Debes seleccionar un fichero ");
 
             }
 

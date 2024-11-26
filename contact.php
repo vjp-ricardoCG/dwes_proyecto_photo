@@ -1,9 +1,11 @@
 <?php
+require 'utils/utils.php';
 $arrayCampos= [];
 $arrayErrores=[];
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
-  
+    $array_error = [];
+    $array_mostrarDatos = [];
 
     $firstName = $_POST['FirstName'] ;
     $lastName = $_POST['LastName'] ;
@@ -12,20 +14,37 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $message = $_POST['Message'] ;
 
 
-    if (  empty($firstName) ){
-     $arrayErrores[0]="Falta el campo FirstName";
+    if (empty($firstName)) {
+        $array_error[] = "El campo First Name no puede estar vacío";
     }
-    if (  empty($email) ){
-    $arrayErrores[2]="Falta el campo Email";
+    if (empty($email)) {
+        $array_error[] = "El campo Email no puede estar vacío";
     }
-    if (  empty($subject) ){
-    $arrayErrores[3]="Falta el campo Subject";
+    if (empty($subject)) {
+        $array_error[] = "El campo subject no puede estar vacío";
     }
-    $arrayCampos[0]=$firstName;
-    $arrayCampos[1]=$lastName;
-    $arrayCampos[2]=$email;
-    $arrayCampos[3]=$subject;
-    $arrayCampos[4]=$message;
+
+    if (empty($array_error)) {
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $array_error[] = "Email incorrecto";
+        } else {
+            $array_mostrarDatos[] = "First Name: $firstName";
+
+            if (!empty($apellido)) {
+                $array_mostrarDatos[] = "Second name: $apellido";
+            }
+
+            $array_mostrarDatos[] = "Email: $email";
+            $array_mostrarDatos[] = "Subject: $subject";
+
+            if (!empty($mensaje)) {
+                $array_mostrarDatos[] = "Message: $mensaje";
+            }
+        }
+    }
+
+    // $mensaje = new Mensaje($firstName, $apellido, $email, $subject, $mensaje);
+    // $mensajeRepository->save($mensaje);
    
 
    
