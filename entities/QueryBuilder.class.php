@@ -109,7 +109,7 @@ abstract class QueryBuilder
     }
     private function getUpdates(array $parameters)
     {
-        $updates = '';
+        $updates = '';          //Quitar =>value
         foreach ($parameters as $key => $value) {
             if ($key !== 'id') {
 

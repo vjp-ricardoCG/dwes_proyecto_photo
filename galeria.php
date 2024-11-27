@@ -36,6 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] ==='POST'){
     $tiposAceptados =['image/jpeg',"image/jpg","image/gif","image/png"];
 
     $imagen= new File('imagen',$tiposAceptados);
+    
 
     $imagen->saveUploadFile(ImagenGaleria::RUTA_IMAGENES_GALLERY);
 

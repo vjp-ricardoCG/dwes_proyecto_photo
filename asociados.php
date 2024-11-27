@@ -31,6 +31,7 @@ require_once 'entities/imagenAsociado.class.php';
 require_once 'exceptions/AppException.class.php';
 require 'core/App.class.php';
 require_once 'repository/ImagenGaleriaRepository.class.php';
+require_once 'repository/AsociadoRepository.class.php';
 require_once 'repository/CategoriaRepository.class.php';
 require_once 'entities/Categoria.class.php';
 
@@ -44,7 +45,7 @@ $mensaje='';
     $config = require_once 'app/config.php';
     App::bind('config',$config);
 
-    $imagenRepository = new ImagenGaleriaRepository();
+    $imagenRepository = new AsociadoRepository();
     
 if ($_SERVER['REQUEST_METHOD'] ==='POST'){
 
