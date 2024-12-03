@@ -5,7 +5,7 @@ require 'utils/utils.php';
 require_once 'entities/Connection.class.php';
 require_once 'entities/ImagenGaleria.class.php';
 require_once 'exceptions/AppException.class.php';
-require 'core/App.class.php';
+require_once 'core/App.class.php';
 require_once 'repository/ImagenGaleriaRepository.class.php';
 require_once 'repository/CategoriaRepository.class.php';
 require_once 'entities/Categoria.class.php';
@@ -17,8 +17,7 @@ $mensaje='';
 
 
  try{
-    $config = require_once 'app/config.php';
-    App::bind('config',$config);
+    
 
     $imagenRepository = new ImagenGaleriaRepository();
     $categoriaRepository= new categoriaRepository();

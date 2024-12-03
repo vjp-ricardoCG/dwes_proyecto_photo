@@ -1,5 +1,7 @@
 <?php include __DIR__.'/partials/inicio-documento.part.php' ?>
+
 <body id="page-top">
+
 
 <!-- Navigation Bar -->
    <nav class="navbar navbar-fixed-top navbar-default">
