@@ -3,14 +3,20 @@
 require 'utils/bootstrap.php';
 
 
-$routes= require 'utils/routes.php';
-
-$uri = trim($_SERVER['REQUEST_URI'],'/');
 
 
 
+ require 'utils/routes.php';
 
-require $routes[$uri];
+
+try  {
+
+require Router::load('utils/routes.php')->direct(Request::uri(),Request::method());
+
+}catch(NotFoundException $exception){
+    die($exception->getMessage());
+}
+
 
 
 
